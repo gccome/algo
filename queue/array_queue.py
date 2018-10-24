@@ -28,3 +28,16 @@ class ArrayQueue(object):
 
     def __str__(self):
         return ' '.join([item for item in self._items[self._head : self._tail]])
+
+
+if __name__ == "__main__":
+    q = ArrayQueue(5)
+    for i in range(5):
+        q.enqueue(str(i))
+        print(q)
+    q.dequeue()
+    q.dequeue()
+    q.enqueue(str(5))
+    q.enqueue(str(5))
+    q.enqueue(str(5))
+    print(q)
