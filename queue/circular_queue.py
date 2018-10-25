@@ -1,15 +1,22 @@
+"""
+Array-based circular queue implementation
+"""
+
+
 class CircularQueue(object):
     def __init__(self, capacity):
         self._capacity = capacity + 1
-        self._items = [str(0) for _ in range(self._capacity)]
+        self._items = []
         self._head = 0
         self._tail = 0
 
     def enqueue(self, item):
         if (self._tail + 1) % self._capacity == self._head:
             return False
-        self._items[self._tail] = item
-        # self._items.append(item)
+        if self._tail == len(self._items):
+            self._items.append(item)
+        else:
+            self._items[self._tail] = item
         self._tail = (self._tail + 1) % self._capacity
         return True
 
@@ -22,9 +29,9 @@ class CircularQueue(object):
 
     def __str__(self):
         if self._tail >= self._head:
-            return ' '.join([item for item in self._items[self._head : self._tail]])
+            return ' '.join([str(item) for item in self._items[self._head : self._tail]])
         else:
-            return ' '.join([item for item in self._items[self._head:] + self._items[:self._tail]])
+            return ' '.join([str(item) for item in self._items[self._head:] + self._items[:self._tail]])
 
 
 if __name__ == "__main__":
@@ -39,5 +46,6 @@ if __name__ == "__main__":
     q.enqueue(str(6))
     q.dequeue()
     q.enqueue(str(6))
+    q.enqueue(str(7))
 
     print(q)
