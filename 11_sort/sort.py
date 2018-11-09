@@ -6,7 +6,7 @@ Bubble sort, insertion sort, and selection sort
 def bubble_sort(a):
     """
     Bubble sort
-    :param a: a list of ints
+    :param a: a list
     :return:
     """
     if len(a) <= 1:
