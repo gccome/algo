@@ -14,17 +14,15 @@ def reverse(head):
         return head
 
     pre = None
-    reverse_head = None
     current = head
 
     while current:
-        reverse_head = current
         tmp = current.next
         current.next = pre
         pre = current
         current = tmp
 
-    return reverse_head
+    return pre
 
 
 def check_circle(head):
@@ -54,7 +52,7 @@ def check_circle(head):
 
 def merge_sorted_lists(l1, l2):
     if l1 is None:
-        return l1
+        return l2
     if l2 is None:
         return l1
 
